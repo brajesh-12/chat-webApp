@@ -5,10 +5,9 @@ import { arcjetProtection } from "../middleware/arcjet.middleware.js";
 
 const router = Router();
 
-router.get("/test", arcjetProtection, (req, res) => {res.status(200).json({message: "Arcjet is working fine!"})});
-router.post("/signup", signup);
+router.post("/signup", arcjetProtection, signup);
 router.post("/login",arcjetProtection,login);
-router.post("/logout", logout);
+router.post("/logout", arcjetProtection, logout);
 
 router.put("/update-profile", protectRoute , updateProfile);
 
