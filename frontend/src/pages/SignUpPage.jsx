@@ -49,7 +49,7 @@ function SignUpPage() {
                     <div className="relative" >
                       <MailIcon className="auth-input-icon" />
                       <input
-                        type="text"
+                        type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="input"
@@ -61,7 +61,7 @@ function SignUpPage() {
                   <div>
                     <label className="auth-input-label" >Password</label>
                     <div className="relative" >
-                      <MailIcon className="auth-input-icon" />
+                      <LockIcon className="auth-input-icon" />
                       <input
                         type="password"
                         value={formData.password}
