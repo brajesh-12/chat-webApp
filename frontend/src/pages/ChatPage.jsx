@@ -1,22 +1,26 @@
 import BorderAnimatedContainer from "../components/BorderAnimatedContainer";
-import { useAuthStore } from "../store/useAuthStore";
+import ProfileHeader from "../components/ProfileHeader";
+import ActiveTabSwitch from "../components/ActiveTabSwitch";
+import { useChatStore } from "../store/useChatStore";
+import ChatsList from "../components/ChatsList";
+import ContactList from "../components/ContactList";
 
 function ChatPage() {
-  const { logOut } = useAuthStore();
+  const { activeTab } = useChatStore();
 
   return (
-    <div className="w-full flex items-center justify-center p-4 bg-slate-900" >
-      <div className="relative w-full max-w-6xl md:h-[800px] h-[650px]" >
-        <BorderAnimatedContainer>
-          <p className="text-zinc-100">hello this is chat screen</p>
-          <div className="justify-center items-center">
-            <button className="btn-primary bg-red-400" onClick={logOut}>
-              Logout
-            </button>
-          </div>
+    <div className="relative w-full max-w-6xl md:h-[800px] h-[650px]" >
+      <BorderAnimatedContainer>
+        {/* Left Side */}
+        <div className="w-80 bg-slate-800/50 backdrop-blur-sm flex flex-col">
+          <ProfileHeader />
+          <ActiveTabSwitch />
 
-        </BorderAnimatedContainer>
-      </div>
+          <div className="flex-1 overflow-y-auto p-4 space-y-2">
+            {activeTab === "chats" ? <ChatsList /> : <ContactList />}
+          </div>
+        </div>
+      </BorderAnimatedContainer>
     </div>
   )
 }
